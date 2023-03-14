@@ -1,0 +1,373 @@
+body {
+    background-color: #141414 !important;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.social ion-icon {
+    margin: 5px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.service button {
+    border: 1px solid #696969;
+    color: #696969;
+    background-color: #212529;
+}
+
+/* Responsive per schermi grandi */
+
+@media only screen and (min-width: 861px) {
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+    nav .container-fluid {
+        margin-left: 30px;
+    }
+    
+    .navbar-nav {
+        font-size: small;
+    }
+
+    .phone-logo {
+        display: none;
+    }
+
+    #offcanvas {
+        display: none;
+    }
+    
+    ion-icon {
+        font-size: large;
+    }
+    
+    .genre-selection {
+        margin-top: 15vh;
+        margin-left: 55px;
+    }
+    
+    .slider-container {
+        margin-bottom: 20vh;
+    }
+
+    .dropbtn {
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        padding: 1px;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 18px;
+        margin-top: 0.45vw;
+    }
+      
+    .dropdown-genres {
+        margin-left: 2vh;
+    }
+    
+    .dropdown-genres ion-icon {
+        margin-left: 20px;
+        font-size: small;
+    }
+      
+    .dropdown-genres-content {
+        display: none;
+        position: absolute;
+        background-color: #000;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
+      
+    .dropdown-genres-content a {
+        color: rgb(255, 255, 255);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-genres-content a:hover {
+        background-color: #5a5a5a;
+    }
+      
+    .dropdown-genres:hover .dropdown-genres-content {
+        display: block;
+    }
+      
+    .dropdown-genres:hover .dropbtn {
+        background-color: #505050;
+    }
+    
+    .slider {
+        margin-top: 40px;
+        margin-left: 55px;
+    }
+
+    .icon-container ion-icon {
+        font-size: 30px;
+        margin-bottom: 10px;
+        z-index: -2;
+    }
+   
+    .card-body {
+        display: none;
+        z-index: 500;
+    }
+    
+    .card-body p {
+        font-size: smaller;
+    }
+    
+    .card:hover .card-body {
+        display: block;
+        position: absolute;
+        top: -0.8px;
+        left: -0.8px;
+        right: -0.5px;
+        bottom: -0.8px;
+        opacity: 0.85;
+        background-color: #000;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        animation: fadeIn 1s;
+    }
+    
+    .maturity-number {
+        border: 1px solid hsla(0,0%,100%,.4);
+        color: white;
+        padding: 0 0.4em;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+    }
+    
+    .player-feature-badge {
+        border: 1px solid hsla(0,0%,100%,.4);
+        border-radius: 3px;
+        color: hsla(0,0%,100%,.9);
+        font-size: .7em;
+        padding: 0 0.5em;
+    }
+    
+    .info {
+        margin-top: -15px;
+    }
+    
+    .seasons {
+        font-size: smaller;
+    }
+    
+    .tags {
+        list-style-type: none;
+        font-size: smaller;
+        margin-left: -30px;
+        margin-top: 20px;
+    }
+    
+    .tags span {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-weight: bolder;
+        color: #6b6b6b;
+    }
+    
+    .owl-stage-outer {
+        overflow: visible !important;
+    }
+
+    .owl-carousel .item:hover {
+        transition: transform 1s;
+        transform-origin: center;
+        transform: scale(1.3);
+        cursor: pointer;
+    }
+
+    .owl-item.active:hover{
+        z-index: 2;
+    }
+    
+    .owl-dots {
+        display: none;
+    }
+    
+    .owl-next {
+        position: absolute;
+        height: 160px;
+        width: 40px;
+        background-color: rgb(71, 71, 71) !important;
+        opacity: 0.2;
+        top: -5px;
+        font-size: 50px !important;
+        right: 0;
+    }
+    
+    .owl-prev {
+        position: absolute;
+        height: 160px;
+        width: 40px;
+        background-color: rgb(71, 71, 71) !important;
+        opacity: 0.1;
+        top: -5px;
+        font-size: 50px !important;
+        left: -55px;
+    }
+
+    #search-bar-box {
+        display: none;
+    }
+
+    #ani-search-bar-box-open {
+        padding-top: 20px;
+        width: 400px;
+        border-radius: 5px;
+        position: absolute;
+        right: 0;
+        background: #212529;
+        height: 100px;
+        animation: slideIn 0.3s;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+        z-index: 9999;
+    }
+
+    #ani-search-bar-box-close {
+        padding-top: 20px;
+        width: 400px;
+        right: 0;
+        border-radius: 5px;
+        position: absolute;
+        background: #212529;
+        height: 100px;
+        animation: slideOut 1s;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+        z-index: 9999;
+    }
+
+    #search-bar {
+        padding: 10px;
+        margin-right: 5px;
+        background-color: #212529;
+        outline: none !important;
+        color: white;
+        border-bottom: solid 1px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        margin-left: 40px;
+        width: 280px;
+        animation: fadeInSearch 1.8s;
+    }
+
+    .lens {
+        top: 8px;
+        right: 8px;
+        position: absolute;
+        font-size: 25px;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0.85;
+        }
+    }
+
+    @keyframes fadeInSearch {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-500px);
+        }
+
+        to {
+            transform: translateY(0px);
+        }
+        
+    }
+
+}
+
+/* Responsive per schermi Piccoli */
+
+@media only screen and (max-width: 850px) {
+
+    body {
+        overflow-x: hidden !important;
+    }
+
+    .slider-container {
+        margin-bottom: 4vw;
+        margin-left: 10.5vw;
+    }
+    
+    .web-logo {
+        display: none;
+    }
+
+    #hamburger {
+        font-size: 25px;
+    }
+
+    .slider {
+        margin-top: 3vw;
+    }
+
+    .phone-logo {
+        display: block;
+    }
+
+    #navbarNav {
+        display: none;
+    }
+
+    .offcanvas-body ul li ion-icon {
+        font-size: 20px;
+        position: relative;
+        margin-right: 10px;
+        top: 5px;
+        left: 5px;
+    }
+
+    .dropdown-genres {
+        display: none;
+    }
+
+    .genre-selection {
+        margin-top: 19.5vw;
+        margin-left: 10.5vw;
+    }
+
+    .card-body {
+        display: none;
+    }
+
+    .owl-nav {
+        display: none;
+    }
+
+    .owl-dots {
+        display: none;
+    }
+
+    #search-bar-box {
+        display: none;
+    }
+
+}

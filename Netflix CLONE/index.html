@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon_Netflix.ico">
+    <script src="./logic.js"></script>
+
+    <!-- Link Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Script Bootstrap -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Link per il funzionamento dello slider -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Script per il funzionamento dello slider -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand web-logo" href="#">
+                <img src="./assets/imgs/Netflix_Logo_RGB.png" alt="Bootstrap" width="90" height="35">
+            </a>
+
+            <a class="navbar-brand phone-logo" href="#">
+                <img src="./assets/imgs/Netflix_Logo_phone.png" alt="Bootstrap" width="20" height="35">
+            </a>
+
+            
+            <div id="offcanvas">
+                <button class="btn btn-primary rounded-0 border-0 bg-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <ion-icon id="hamburger" name="menu-outline"></ion-icon>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <img src="./assets/imgs/Netflix_Logo_RGB.png" alt="Bootstrap" width="100" height="45">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                              <a class="nav-link active" onclick="home()" aria-current="page" href="#"><ion-icon name="home-outline"></ion-icon> Home</a> 
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" onclick="tvShows()" href="#"><ion-icon name="tv-outline"></ion-icon> TV Shows</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="movies()" href="#"><ion-icon name="videocam-outline"></ion-icon> Movie</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#"><ion-icon name="time-outline"></ion-icon> Recently Added</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><ion-icon name="list-outline"></ion-icon> My List</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Adventure</a></li>
+                                <li><a class="dropdown-item" href="#">Comedy</a></li>
+                                <li><a class="dropdown-item" href="#">Crime / Gangster</a></li>
+                              </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Selection -->
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" onclick="home()" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="tvShows()" href="#">TV Shows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="movies()" href="#">Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"href="#">Recently Added</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link"href="#">My List</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Icons -->
+
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" onclick="slideIn()" href="#"><ion-icon name="search-outline"></ion-icon></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <!-- Title -->
+
+    <div class="d-inline-flex genre-selection">
+        <h2 class="text-light" id="change">Netflix Time?</h2>
+
+        <div class="dropdown-genres">
+            <button class="dropbtn">Genres <ion-icon name="caret-down-outline"></ion-icon></button>
+            <div class="dropdown-genres-content">
+              <a href="#">Action</a>
+              <a href="#">Adventure</a>
+              <a href="#">Comedy</a>
+              <a href="#">Crime / Gangster</a>
+              <a href="#">Drama</a>
+              <a href="#">Experimental</a>
+            </div>
+          </div>
+    </div>
+
+    <!-- Search bar -->
+
+    <div id="search-bar-box">
+        <input class="shadow-none" type="text" id="search-bar" placeholder="Search"/>
+
+        <a href=""><ion-icon class="text-light lens" name="close-outline"></ion-icon></a>
+    </div>
+
+    <!-- Sliders -->
+    
+    <div class="slider-container">
+
+        
+        
+        <!-- Slider Trending -->
+
+        <div class="slider">
+
+            <h4 class="text-light">Trending Now</h4>
+
+            <div class="owl-carousel owl-theme">
+
+                <div class="item">
+
+                    <!-- Card 1 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/1.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 2 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/2.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 3 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/3.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 4 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/4.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 5 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/5.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 6 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/6.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 7 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/7.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 8 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/8.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 9 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/9.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 10 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/10.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 11 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/11.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 12 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/12.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+
+            
+
+        </div>
+
+        <!-- Slider Watch It Again -->
+
+        <div class="slider">
+
+            <h4 class="text-light">Watch It Again</h4>
+
+            <div class="owl-carousel owl-theme">
+
+                <div class="item">
+
+                    <!-- Card 1 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/13.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 2 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/14.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 3 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/15.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 4 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/16.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 5 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/17.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 6 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/18.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 7 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/7.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 8 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/8.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 9 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/9.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 10 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/10.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 11 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/11.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 12 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/12.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Slider New Releases-->
+
+        <div class="slider">
+
+            <h4 class="text-light">New Releases</h4>
+
+            <div class="owl-carousel owl-theme">
+
+                <div class="item">
+
+                    <!-- Card 1 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/7.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 2 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/12.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 3 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/8.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 4 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/9.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 5 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/10.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 6 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/11.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 7 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/7.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 8 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/8.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 9 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/9.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 10 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/10.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 11 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/11.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <!-- Card 12 -->
+
+                    <div class="card text-bg-dark border-0 rounded-1" style="width: 18rem;">
+                        <img src="./assets/imgs/movies/12.png" class="card-img-top rounded-0" alt="movie">
+                        <div class="card-body">
+                            <div class="icon-container d-flex justify-content-between">
+                                <div>
+                                    <ion-icon name="play-circle"></ion-icon>
+                                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                </div>
+                                <div>
+                                    <ion-icon name="chevron-down-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <p class="card-text text-success">99% Match</p>
+                            <div class="info">
+                                <span class="maturity-number">13+</span> <span class="text-light seasons"> 2 Season </span><span class="player-feature-badge">HD</span>
+                            </div>
+                            <ul class="tags d-flex">
+                                <li>Drama</li>
+                                <span>·</span>
+                                <li>Experimental</li>
+                                <span>·</span>
+                                <li>Crime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+
+            
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                      <div class="p-2 mb-0">
+                        <ul class="social d-flex list-unstyled text-secondary">
+                            <li><ion-icon name="logo-facebook"></ion-icon></li>
+                            <li><ion-icon name="logo-instagram"></ion-icon></li>
+                            <li><ion-icon name="logo-twitter"></ion-icon></li>
+                            <li><ion-icon name="logo-youtube"></ion-icon></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="p-3">
+                        <div class="col mb-1">
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Audio and Subtitles</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Media Center</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Privacy</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col">
+                      <div class="p-3">
+                        <div class="col mb-3">
+                            <ul class="nav flex-column">
+                              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Audio Description</a></li>
+                              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Investor Relations</a></li>
+                              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Legal Notices</a></li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="p-3">
+                        <div class="col mb-3">
+                            <ul class="nav flex-column">
+                              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Help Center</a></li>
+                              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Jobs</a></li>
+                              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Cookie Preferences</a></li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                          <div class="col mb-3">
+                              <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Gift Cards</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Terns of Use</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 link-secondary">Corporate Information</a></li>
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-12 service">
+                        <div class="p-2">
+                            <button type="button">Service Code</button>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="p-3">
+                            <p class="text-secondary">© 1997-2019 Netflix, Inc. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+          </nav>
+    </footer>
+
+  <!-- Script jQuery per il funzionamento dello slider -->
+
+  <script type="text/javascript">
+
+    $('.owl-carousel').owlCarousel({
+      margin:10,
+      nav:true,
+      responsive:{
+
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        },
+        1600:{
+            items:5
+        },
+        1920:{
+            items:6
+        }
+      }
+    
+    });
+
+  </script>
+
+</body>
+</html>
